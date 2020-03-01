@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Book List</string>
+
+    <string name="subject_search">Subject:</string>
+
+    <string name="title_search">Title:</string>
+
+    <string name="author_search">Author:</string>
+
+    <string name="search_button">Search</string>
+
+    <string name="subject_hint">Search</string>
+
+    <string name="title_hint">Enter Title</string>
+
+    <string name="author_hint">Enter Author</string>
+
+    <string name="no_books">No books found.</string>
+
+    <string name="no_authors">No authors listed.</string>
+
+    <string name="no_connection">No network connection</string>
+
+    <string name="no_search_term">Please enter a search term!</string>
+
+    <string name="max_results">Please enter a search term!</string>
+
+</resources>
