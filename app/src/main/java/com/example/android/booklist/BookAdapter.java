@@ -10,35 +10,33 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.GenericTransitionOptions;
+import androidx.annotation.Nullable;
+
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.module.AppGlideModule;
+import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.ViewTarget;
-//import com.squareup.picasso.Picasso;
+import com.bumptech.glide.request.target.Target;
 
-import org.json.JSONException;
-
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 
 public class BookAdapter extends ArrayAdapter<Book> {
-    Context context;
-    int resourse;
-  // RequestOptions option;
+    private Context mContext;
 
     private static final String LOG_TAG = BookAdapter.class.getSimpleName();
 
 
     public BookAdapter(Context context, ArrayList<Book> books) {
         super(context, 0, books);
-        this.context = context;
-        this.resourse = resourse;
+       mContext = context;
 
     }
 
-    //@Override
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         ViewHolder viewHolder;
@@ -83,27 +81,17 @@ public class BookAdapter extends ArrayAdapter<Book> {
 
         viewHolder.bookPage.setText(Integer.toString(currentBook.getPageCount()));
 
-        RequestOptions requestOptions = new RequestOptions().centerCrop()
+        RequestOptions requestOptions = new RequestOptions()
                 .error(R.mipmap.ic_launcher_round);
 
-        //try {
-
-            Glide.with(context).load(currentBook.getThumbnail()).apply(requestOptions).into(viewHolder.bookCover);
-      /*  } catch (Exception e){
-            Log.e("BookAdapter", "Error");
-
-        }*/
-
-        /* Glide.with(context)
-                .load(currentBook.getSmallThumbnail()).placeholder(R.drawable.ic_launcher_background)
+        Glide.with(mContext)
+                .load(currentBook.getSmallThumbnail())
                         .error(R.drawable.ic_launcher_background)
                         .dontAnimate()
-                        .into(viewHolder.bookCover);*/
-      /*  Glide.with(context).load(currentBook.getSmallThumbnail())
-                .thumbnail(Glide.with(context).load("https://www.googleapis.com/books/v1/volumes?q====/"))
-                .apply(requestOptions).into(viewHolder.bookCover);*/
-      /*String url = "https://icon-icons.com/ru/%D0%B7%D0%BD%D0%B0%D1%87%D0%BE%D0%BA/%D0%9E%D1%81%D0%B5%D0%BB-3/80633.png";
-      Glide.with(context).load(url).apply(requestOptions).into(viewHolder.bookCover);*/
+                        .into(viewHolder.bookCover);
+
+
+
 
             return convertView;
         }

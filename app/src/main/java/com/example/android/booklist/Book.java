@@ -13,17 +13,17 @@ public class Book {
 
     private String mUrl;
 
-    private String mThumbnail;
+    private String mSmallThumbnail;
 
 
-    public Book(String bookTitle, String authors, String publishedDate, Double averageRating, Integer pageCount, String url, String thumbnail) {
+    public Book(String bookTitle, String authors, String publishedDate, Double averageRating, Integer pageCount, String url, String smallthumbnail) {
         mBookTitle = bookTitle;
         mAuthors = authors;
         mPublishedDate = publishedDate;
         mAverageRating = averageRating;
         mPageCount = pageCount;
         mUrl = url;
-        mThumbnail = thumbnail;
+        mSmallThumbnail = smallthumbnail;
     }
 
     public String getBookTitle() {
@@ -51,8 +51,8 @@ public class Book {
     }
 
 
-    public String getThumbnail() {
-        return mThumbnail;
+    public String getSmallThumbnail() {
+        return mSmallThumbnail;
 
     }
 

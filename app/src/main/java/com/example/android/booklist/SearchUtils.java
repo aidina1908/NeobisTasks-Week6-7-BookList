@@ -1,8 +1,6 @@
 package com.example.android.booklist;
 
 import android.util.Log;
-import android.widget.ImageView;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -126,6 +124,10 @@ public class SearchUtils {
 
                 double maturityRating = volumeInfo.optDouble("averageRating");
 
+                JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
+
+                String smallThumbnail = imageLinks.getString("smallThumbnail");
+
 
                 String authors;
                 if (volumeInfo.has("authors")) {
@@ -144,9 +146,6 @@ public class SearchUtils {
                     authors = "No authors listed.";
                 }
 
-              JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
-
-                String thumbnail = imageLinks.optString("thumbnail");
 
 
                /* JSONObject imageLinks = null;
@@ -160,7 +159,7 @@ public class SearchUtils {
                 } else {
                     smallThumbnail = imageLinks.getString("smallThumbnail");*/
 
-                books.add(new Book(bookTitle, authors, publishedDate, maturityRating, pageCount, url, thumbnail));
+                books.add(new Book(bookTitle, authors, publishedDate, maturityRating, pageCount, url, smallThumbnail));
             }
         } catch (JSONException e) {
             Log.e("SearchUtils", "Problem parsing the book JSON results", e);
